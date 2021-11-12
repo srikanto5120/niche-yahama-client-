@@ -22,7 +22,6 @@ const Bikes = () => {
 
   return (
     <div id="bikes">
-      <Navigation></Navigation>
       <Container>
         <h4
           style={{ fontFamily: "Roboto" }}

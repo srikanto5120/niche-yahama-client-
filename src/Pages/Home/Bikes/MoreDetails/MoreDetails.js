@@ -9,7 +9,7 @@ const MoreDetails = () => {
   const [bikeDetails, setBikeDetails] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/bikes/${id}`)
+    fetch(`https://mysterious-crag-45233.herokuapp.com/bikes/${id}`)
       .then((res) => res.json())
       .then((data) => setBikeDetails(data));
   }, []);

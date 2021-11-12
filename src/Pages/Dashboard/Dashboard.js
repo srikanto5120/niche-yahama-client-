@@ -1,25 +1,18 @@
 import React from "react";
-import {
-  Link,
-  BrowserRouter,
-  Switch,
-  Route,
-  useRouteMatch,
-} from "react-router-dom";
+import { Link, Switch, Route, useRouteMatch } from "react-router-dom";
 import { Col, Row } from "react-bootstrap";
 import "./Dashboard.css";
-import Navigation from "../Shared/Navigation/Navigation";
+
 import "./Dashboard.css";
-import useAuth from "../../Context/useAuth";
+
 import MyOrder from "./MyOrder/MyOrder";
 import Pay from "./Pay/Pay";
-import Login from "../Login/Login/Login";
+
 import UserProfile from "./UserProfile/UserProfile";
 import Review from "./Review/Review";
 import DashboardNav from "./DashboardNav/DashboardNav";
 
 const Dashboard = () => {
-  const { logOut } = useAuth();
   let { path, url } = useRouteMatch();
   const dashboardBannerBg = {
     background:

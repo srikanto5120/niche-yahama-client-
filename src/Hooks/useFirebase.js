@@ -119,7 +119,7 @@ const useFirebase = () => {
   /// saved user data in mongodb
   const savedDb = (email, displayName) => {
     const user = { email, displayName };
-    fetch(`http://localhost:5000/users`, {
+    fetch(`https://mysterious-crag-45233.herokuapp.com/users`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -130,9 +130,9 @@ const useFirebase = () => {
       .then((data) => setUserDataId(data));
   };
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${userDataId}`).then((res) =>
-      res.json().then((data) => setUser(data))
-    );
+    fetch(
+      `https://mysterious-crag-45233.herokuapp.com/users/${userDataId}`
+    ).then((res) => res.json().then((data) => setUser(data)));
   }, [userDataId]);
   return {
     user,

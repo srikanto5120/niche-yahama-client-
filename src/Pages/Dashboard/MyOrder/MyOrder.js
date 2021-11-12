@@ -10,13 +10,15 @@ const MyOrder = () => {
   const [orderBikes, setOrderBikes] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/orderBike?email=${user.email}`)
+    fetch(
+      `https://mysterious-crag-45233.herokuapp.com/orderBike?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setOrderBikes(data));
   }, [orderBikes]);
 
   const handleOrderBikes = (id) => {
-    fetch(`http://localhost:5000/orderBikes/${id}`, {
+    fetch(`https://mysterious-crag-45233.herokuapp.com/orderBikes/${id}`, {
       method: "DELETE",
     });
   };

@@ -9,7 +9,7 @@ const Review = () => {
   const { user } = useAuth();
   console.log(user);
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/review", {
+    fetch("https://mysterious-crag-45233.herokuapp.com/review", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

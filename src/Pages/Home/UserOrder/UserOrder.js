@@ -13,14 +13,14 @@ const UserOrder = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/bikes/${orderId}`)
+    fetch(`https://mysterious-crag-45233.herokuapp.com/bikes/${orderId}`)
       .then((res) => res.json())
       .then((data) => setOrderBike(data));
   }, []);
 
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/orderBikes", {
+    fetch("https://mysterious-crag-45233.herokuapp.com/orderBikes", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

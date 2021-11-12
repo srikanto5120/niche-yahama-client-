@@ -68,14 +68,16 @@ const Login = () => {
         </Form>
       )}
 
-      <p>............................or..................................</p>
-      <nav onClick={handleGoogleSignIn}>
-        <img
-          style={{ width: "60px", cursor: "pointer" }}
-          src="https://i.ibb.co/4g3sDPh/google-llc.png"
-          alt=""
-        />
-      </nav>
+      <div className="text-center" style={{ width: "200px", margin: "0 auto" }}>
+        <p>............................or..................................</p>
+        <nav onClick={handleGoogleSignIn}>
+          <img
+            style={{ width: "60px", cursor: "pointer" }}
+            src="https://i.ibb.co/4g3sDPh/google-llc.png"
+            alt=""
+          />
+        </nav>
+      </div>
       {isLoading && <Spinner animation="border" variant="info" />}
     </div>
   );

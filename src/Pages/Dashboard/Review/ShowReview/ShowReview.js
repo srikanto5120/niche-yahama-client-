@@ -9,7 +9,7 @@ const ShowReview = () => {
   const [reviews, setReviews] = useState([]);
   const { user } = useAuth();
   useEffect(() => {
-    fetch("http://localhost:5000/review")
+    fetch("https://mysterious-crag-45233.herokuapp.com/review")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
