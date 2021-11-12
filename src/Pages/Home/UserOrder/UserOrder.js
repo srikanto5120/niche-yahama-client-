@@ -2,11 +2,15 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { Card, Col, Container, Row, Table } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import swal from "sweetalert";
+
 import { useForm } from "react-hook-form";
+import useAuth from "../../../Context/useAuth";
 
 const UserOrder = () => {
   const { orderId } = useParams();
   const [orderBike, setOrderBike] = useState({});
+  const { user } = useAuth();
 
   useEffect(() => {
     fetch(`http://localhost:5000/bikes/${orderId}`)
@@ -16,14 +20,17 @@ const UserOrder = () => {
 
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
     fetch("http://localhost:5000/orderBikes", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((data) => data);
+      .then((data) => {
+        if (data) {
+          swal("Order Complete", "You clicked the button!", "success");
+        }
+      });
   };
 
   useEffect(() => {
@@ -134,7 +141,7 @@ const UserOrder = () => {
               className="w-75 py-2"
               type="email"
               {...register("email")}
-              value="shreekanta@gmail.com"
+              value={user.email}
             />
             <br />
             <label htmlFor="">Phone Number:</label>
@@ -155,9 +162,11 @@ const UserOrder = () => {
             />
             <br />
 
-            <button className="submit-btn px-5 ms-5 mt-5  btn btn-primary">
-              Place Order
-            </button>
+            <input
+              type="submit"
+              className="submit-btn px-5 ms-5 mt-5  btn btn-primary"
+              value="Place Order"
+            />
           </form>
         </Col>
       </Row>

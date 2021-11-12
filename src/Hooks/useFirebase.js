@@ -16,6 +16,7 @@ initializeAuthentication();
 const auth = getAuth();
 const useFirebase = () => {
   const [user, setUser] = useState({});
+  const [userDataId, setUserDataId] = useState("");
   const [isLoading, setIsloading] = useState(true);
   const [authError, setAuthError] = useState("");
 
@@ -82,8 +83,6 @@ const useFirebase = () => {
     setIsloading(true);
     signInWithEmailAndPassword(auth, email, password, location, history)
       .then((userCredential) => {
-        console.log(userCredential.user);
-        savedDb(userCredential.user.email, userCredential.user.displayName);
         const destination = location?.state?.from || "/";
         history.replace(destination);
         setAuthError("");
@@ -120,14 +119,21 @@ const useFirebase = () => {
   /// saved user data in mongodb
   const savedDb = (email, displayName) => {
     const user = { email, displayName };
-    fetch("http://localhost:5000/users", {
+    fetch(`http://localhost:5000/users`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify(user),
-    }).then();
+    })
+      .then((res) => res.json())
+      .then((data) => setUserDataId(data));
   };
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${userDataId}`).then((res) =>
+      res.json().then((data) => setUser(data))
+    );
+  }, [userDataId]);
   return {
     user,
     googleSignIn,

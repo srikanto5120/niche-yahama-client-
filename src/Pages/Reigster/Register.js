@@ -47,6 +47,7 @@ const Register = () => {
       {!isLoading && (
         <Form className="w-25 mx-auto p-5" onSubmit={handleSubmitForm}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
+            <h3>Please Register</h3>
             <Form.Control
               type="text"
               onBlur={handleOnChange}
@@ -71,7 +72,11 @@ const Register = () => {
               placeholder="Password"
             />
           </Form.Group>
-          <input type="submit" value="Login" />
+          <input
+            className="btn btn-primary px-4"
+            type="submit"
+            value="Register"
+          />
           <br />
           <Link to="/login">
             {" "}

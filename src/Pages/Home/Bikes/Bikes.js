@@ -3,25 +3,33 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card, Col, Container, NavLink, Row, Table } from "react-bootstrap";
+import Navigation from "../../Shared/Navigation/Navigation";
 
 const Bikes = () => {
   const [bikes, setBikes] = useState([]);
   console.log(bikes);
   // load data
   useEffect(() => {
-    fetch("http://localhost:5000/bikes")
+    fetch("https://mysterious-crag-45233.herokuapp.com/bikes")
       .then((res) => res.json())
       .then((data) => setBikes(data));
   }, []);
   const handleShowMoreBike = () => {
-    fetch("http://localhost:5000/moreBikes")
+    fetch("https://mysterious-crag-45233.herokuapp.com/moreBikes")
       .then((res) => res.json())
       .then((data) => setBikes(data));
   };
 
   return (
     <div id="bikes">
+      <Navigation></Navigation>
       <Container>
+        <h4
+          style={{ fontFamily: "Roboto" }}
+          className="py-4 fw-bold text-center"
+        >
+          Our Products
+        </h4>
         <Row xs={1} md={3} className="g-4 ">
           {bikes.map((bike) => (
             <Col className=" p-3 rounded" key={bike._id}>
@@ -63,7 +71,10 @@ const Bikes = () => {
                     <Link to={`/bike/order/${bike._id}`}>
                       <button className="btn btn-primary px-5  ">Order</button>
                     </Link>
-                    <button className="btn btn-primary ">More Details</button>
+                    <Link to={`/bike/moreDetails/${bike._id}`}>
+                      {" "}
+                      <button className="btn btn-primary ">More Details</button>
+                    </Link>
                   </div>
                 </Card.Body>
               </Card>

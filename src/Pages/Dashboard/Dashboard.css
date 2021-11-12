@@ -1,0 +1,17 @@
+.content {
+  background-blend-mode: difference;
+}
+.link {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  height: 50px;
+  padding: 10px;
+}
+.link:hover {
+  background-color: rgba(224, 209, 206, 0.932);
+  color: black;
+  border-radius: 10px;
+  height: 50px;
+  padding: 10px;
+}

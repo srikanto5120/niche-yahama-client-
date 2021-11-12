@@ -10,7 +10,7 @@ const Footer = () => {
         <Col md={3}>
           <div>
             <p>(+88)01737813575 </p>
-            <p>ducat@gmail.com</p>
+            <p>yamaha@gmail.com</p>
             <p>3561 New Town Dhaka</p>
             <div>
               <i className="fab footer-icon fa-facebook-f"></i>
@@ -51,10 +51,7 @@ const Footer = () => {
                 <p>Discount</p>
               </a>
               <a href="*">
-                <p>Medical Camping</p>
-              </a>
-              <a href="*">
-                <p>Free Treatment</p>
+                <p>Camping</p>
               </a>
             </a>
           </div>
