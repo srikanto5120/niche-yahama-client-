@@ -1,20 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import { useEffect } from "react";
+import { Card, Col, Container, Row, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Card, Col, Container, NavLink, Row, Table } from "react-bootstrap";
-import Navigation from "../../Shared/Navigation/Navigation";
-
-const Bikes = () => {
-  const [bikes, setBikes] = useState([]);
-
-  // load data
+const ShowMore = () => {
+  const [moreBikes, setMoreBikes] = useState([]);
   useEffect(() => {
-    fetch("https://mysterious-crag-45233.herokuapp.com/bikes")
+    fetch("https://mysterious-crag-45233.herokuapp.com/moreBikes")
       .then((res) => res.json())
-      .then((data) => setBikes(data));
+      .then((data) => setMoreBikes(data));
   }, []);
-
   return (
     <div id="bikes">
       <Container>
@@ -25,7 +19,7 @@ const Bikes = () => {
           Our Products
         </h4>
         <Row xs={1} md={3} className="g-4 ">
-          {bikes.map((bike) => (
+          {moreBikes.map((bike) => (
             <Col className=" p-3 rounded" key={bike._id}>
               <Card>
                 <Card.Img variant="top" src={bike.img} />
@@ -75,10 +69,9 @@ const Bikes = () => {
             </Col>
           ))}
         </Row>
-        <Link to="/moreBikes">show more</Link>
       </Container>
     </div>
   );
 };
 
-export default Bikes;
+export default ShowMore;

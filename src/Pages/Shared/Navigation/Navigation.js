@@ -23,8 +23,10 @@ const Navigation = () => {
             as={Link}
             to="/"
           >
-            {" "}
-            Yamaha
+            <img
+              src="https://global.yamaha-motor.com/shared/img/rwd_identity.png"
+              alt=""
+            />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">

@@ -13,6 +13,7 @@ import MoreDetails from "./Pages/Home/Bikes/MoreDetails/MoreDetails";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyOrder from "./Pages/Dashboard/MyOrder/MyOrder";
 import PrivateRoute from "./Pages/PrivateRoute/PrivateRoute";
+import ShowMore from "./Pages/Home/ShowMore/ShowMore";
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
           <Switch>
             <Route path="/bikes">
               <Bikes />
+            </Route>
+            <Route path="/moreBikes">
+              <ShowMore />
             </Route>
             <PrivateRoute path="/bike/order/:orderId">
               <UserOrder />
